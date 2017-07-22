@@ -25200,9 +25200,12 @@ ion-navbar.toolbar {
 }
 
 .img-user-perfil {
-  width: 7rem;
-  height: 7rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
+  position: absolute;
+  left: calc(50% - 4rem);
+  right: 0;
 }
 
 .img-book-thumb-small {
