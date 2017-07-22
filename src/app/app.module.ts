@@ -5,13 +5,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-<<<<<<< HEAD
-import { PerfilPage } from '../pages/user/perfil/perfil';
-import { StartPage } from '../pages/start/start';
-=======
+
 import { PerfilPage } from '../pages/perfil/perfil';
+import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
->>>>>>> 739ec9fcde7fdda1953774bc0167efbbe9224901
+import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,11 +33,9 @@ export const firebaseConfig = {
     HomePage,
     ListPage,
     PerfilPage,
-<<<<<<< HEAD
-    StartPage
-=======
-    LoginPage
->>>>>>> 739ec9fcde7fdda1953774bc0167efbbe9224901
+    StartPage,
+    LoginPage,
+    CadastroUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -53,11 +50,9 @@ export const firebaseConfig = {
     HomePage,
     ListPage,
     PerfilPage,
-<<<<<<< HEAD
-    StartPage
-=======
-    LoginPage
->>>>>>> 739ec9fcde7fdda1953774bc0167efbbe9224901
+    StartPage,
+    LoginPage,
+    CadastroUsuarioPage
   ],
   providers: [
     StatusBar,

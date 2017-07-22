@@ -1,7 +1,8 @@
+//View child para navegar para outra pagina
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
-import { LoginPage } from '../user/login/login';
+import {LoginPage} from '../login/login';
+import {CadastroUsuarioPage} from '../cadastro-usuario/cadastro-usuario';
 
 @Component({
   selector: 'page-start',
@@ -9,8 +10,9 @@ import { LoginPage } from '../user/login/login';
 })
 export class StartPage {
   
-  constructor(public navCtrl: NavController) {
-    
-  }
+  constructor(public navCtrl: NavController) {}
 
+  public irParaCadastro(){
+    this.navCtrl.push(CadastroUsuarioPage);
+  }
 }
