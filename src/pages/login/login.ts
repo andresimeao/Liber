@@ -7,6 +7,10 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
   
+  user = {
+    emai:'',
+    password:''
+  }
   
   constructor(public navCtrl: NavController) {
     

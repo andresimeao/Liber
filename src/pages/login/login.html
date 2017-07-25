@@ -1,7 +1,17 @@
 <ion-header>
-    
+
 </ion-header>
 
 <ion-content padding>
-    testando boys
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>E-mail</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label fixed>Senha</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <ion-item><button ion-button full (click)="createUser(user)">Cadastrar</button></ion-item>
+    </ion-list>
 </ion-content>
