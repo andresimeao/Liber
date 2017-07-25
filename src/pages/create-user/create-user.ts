@@ -31,14 +31,14 @@ export class CreateUserPage {
   public createUser(user){
 
     let alert = this.alertCtrl.create({
-    title: 'Aviso',
-    subTitle: 'Usuário Criado Com sucesso',
+    title: 'AVISO',
+    subTitle: 'Usuário criado com sucesso',
     buttons: ['ok']
   });
 
     let alertError = this.alertCtrl.create({
-    title: 'Aviso',
-    subTitle: 'Falha ao Criar Usuario',
+    title: 'AVISO',
+    subTitle: 'Falha ao criar usuario',
     buttons: ['ok']
   });
   
@@ -53,10 +53,11 @@ export class CreateUserPage {
       this.afDB.database.ref('users/'+ firebaseUser.uid).set(user);
       loading.dismiss();  
       alert.present();
-    }).catch((error)=>{
+    }, (error)=>{
       loading.dismiss();
       alertError.present();
     });
+    
        
      
   }
