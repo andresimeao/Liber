@@ -12,7 +12,11 @@ export class StartPage {
   
   constructor(public navCtrl: NavController) {}
 
-  public irParaCadastro(){
+  public showCreateUser(){
     this.navCtrl.push(CreateUserPage);
+  }
+
+  public showLogin(){
+    this.navCtrl.push(LoginPage);
   }
 }
