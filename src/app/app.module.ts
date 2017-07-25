@@ -9,7 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
-import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
+import { CreateUserPage } from '../pages/create-user/create-user';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,7 +35,7 @@ export const firebaseConfig = {
     PerfilPage,
     StartPage,
     LoginPage,
-    CadastroUsuarioPage
+    CreateUserPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +52,7 @@ export const firebaseConfig = {
     PerfilPage,
     StartPage,
     LoginPage,
-    CadastroUsuarioPage
+    CreateUserPage
   ],
   providers: [
     StatusBar,

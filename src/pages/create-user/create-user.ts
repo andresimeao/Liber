@@ -11,20 +11,21 @@ import * as firebase from 'firebase/app';
  */
 
 @Component({
-  selector: 'page-cadastro-usuario',
-  templateUrl: 'cadastro-usuario.html',
+  selector: 'page-create-user',
+  templateUrl: 'create-user.html',
 })
-export class CadastroUsuarioPage {
-  usuario = {email:null,senha:null,nome:null, caminhoFoto:null};
+export class CreateUserPage {
+  user = {email:null,password:null,name:null, urlPhoto:null};
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth) {
   }
   
-  public cadastrarUsuario(usuario){
+  public createUser(user){
     
-    this.afAuth.auth.createUserWithEmailAndPassword(usuario.email , usuario.senha).
+    this.afAuth.auth.createUserWithEmailAndPassword(user.email , user.password).
     then((firebaseUser) => {
-      this.afDB.database.ref('usuarios/'+ firebaseUser.uid).set(usuario)
+      this.afDB.database.ref('users/'+ firebaseUser.uid).set(user);
+      alert('cadastrado com sucesso');
     }).catch((error)=>{
       alert('cadastro deu errado por causa : '+ error);
     });

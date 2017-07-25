@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
-import {CadastroUsuarioPage} from '../cadastro-usuario/cadastro-usuario';
+import {CreateUserPage} from '../create-user/create-user';
 
 @Component({
   selector: 'page-start',
@@ -13,6 +13,6 @@ export class StartPage {
   constructor(public navCtrl: NavController) {}
 
   public irParaCadastro(){
-    this.navCtrl.push(CadastroUsuarioPage);
+    this.navCtrl.push(CreateUserPage);
   }
 }
