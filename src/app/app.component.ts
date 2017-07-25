@@ -29,8 +29,6 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Perfil', component: PerfilPage },
       { title: 'Login', component: LoginPage },
-      {title: 'Start', component: StartPage },
-      {title:'CreateUser', component:CreateUserPage}
     ];
 
   }
