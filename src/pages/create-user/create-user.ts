@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the CadastroUsuarioPage page.
  *
@@ -15,22 +17,49 @@ import * as firebase from 'firebase/app';
   templateUrl: 'create-user.html',
 })
 export class CreateUserPage {
-  user = {email:null,password:null,name:null, urlPhoto:null};
+  user = {email:null,
+    password:null,
+    name:null, 
+    urlPhoto:null
+  };
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth) {
+  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController) {
   }
-  
+
+
   public createUser(user){
-    
+
+    let alert = this.alertCtrl.create({
+    title: 'AVISO',
+    subTitle: 'Usuário criado com sucesso',
+    buttons: ['ok']
+  });
+
+    let alertError = this.alertCtrl.create({
+    title: 'AVISO',
+    subTitle: 'Falha ao criar usuario',
+    buttons: ['ok']
+  });
+  
+  let loading = this.loadingCtrl.create({
+    content: 'Salvando...'
+  });
+ 
+    loading.present();
+
     this.afAuth.auth.createUserWithEmailAndPassword(user.email , user.password).
     then((firebaseUser) => {
       this.afDB.database.ref('users/'+ firebaseUser.uid).set(user);
-      alert('cadastrado com sucesso');
-    }).catch((error)=>{
-      alert('cadastro deu errado por causa : '+ error);
+      loading.dismiss();  
+      alert.present();
+    }, (error)=>{
+      loading.dismiss();
+      alertError.present();
     });
+    
        
-        
+     
   }
 
 }
