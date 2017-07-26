@@ -8,12 +8,14 @@
     <ion-list>
         <ion-item>
             <ion-label fixed>E-mail</ion-label>
-            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+            <ion-input type="text" [(ngModel)]="user1.email"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label fixed>Senha</ion-label>
-            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+            <ion-input type="password" [(ngModel)]="user1.password"></ion-input>
         </ion-item>
-        <ion-item><button ion-button block (click)="loginIn()">Cadastrar</button></ion-item>
+        <ion-item>
+            <button ion-button block (click)="loginIn(user1)">Cadastrar</button>
+        </ion-item>
     </ion-list>
 </ion-content>
