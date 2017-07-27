@@ -6,6 +6,13 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'create-book.html',
 })
 export class CreateBookPage {
+  
+  book = {
+    title:null,
+    synopsis:null,
+    category:null,
+    gender:null
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
