@@ -5,6 +5,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import * as firebase from 'firebase/app';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {NameValidator} from '../../validators/name';
+
 /**
  * Generated class for the CadastroUsuarioPage page.
  *
@@ -17,18 +20,29 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'create-user.html',
 })
 export class CreateUserPage {
-  user = {email:null,
+  user = {
+    email:null,
     password:null,
     name:null, 
     urlPhoto:null
   };
+  public addUserForm:FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController) {
+  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController,
+  public formBuilder: FormBuilder, public nameValidator: NameValidator) {
+
   }
 
 
+
   public createUser(user){
+    
+    this.addUserForm = this.formBuilder.group({
+      email:['',Validators.compose([Validators.required, Validators.email])],
+      password:['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      name:['',Validators.compose([Validators.required, this.nameValidator.isValid])]
+    });
 
     let alert = this.alertCtrl.create({
     title: 'AVISO',
