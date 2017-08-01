@@ -14,23 +14,42 @@
 
 
 <ion-content padding>
-    <form [formGroup]="addUserForm" (submit)="createUser(user)" novalidate>
+    <form [formGroup]="addUserForm" (ngSubmit)="createUser()" novalidate>
         <ion-list>
 
             <ion-item>
                 <ion-label fixed>E-mail</ion-label>
-                <ion-input [class.invalid]="!addUserForm.cotrols.email.valid&& addUserForm.control.email.dirty" type="text" [(ngModel)]="user.email"></ion-input>
-                <p ng-if="!addUserForm.cotrols.email.valid&& addUserForm.control.email.dirty" class="error-message">email invalido</p>
+                <ion-input [class.invalid]="!addUserForm.controls.email.valid && addUserForm.controls.email.dirty" formControlName="email" type="text" ></ion-input>
             </ion-item>
+
+            <ion-item class="error-message"
+            *ngIf="!addUserForm.controls.email.valid && addUserForm.controls.email.dirty"> 
+            <p>Email invalido</p>
+            </ion-item>
+
             <ion-item>
                 <ion-label fixed>Nome</ion-label>
-                <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+                <ion-input [class.invalid]="!addUserForm.controls.name.valid && addUserForm.controls.name.dirty"
+                formControlName="name" type="text" ></ion-input>
             </ion-item>
+
+            <ion-item class="error-message"
+            *ngIf="!addUserForm.controls.name.valid && addUserForm.controls.name.dirty">
+                <p>Nome invalido</p>
+            </ion-item>
+
             <ion-item>
                 <ion-label fixed>Senha</ion-label>
-                <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+                <ion-input [class.invalid]="!addUserForm.controls.password.valid && addUserForm.controls.password.dirty"
+                formControlName="password" type="password" ></ion-input>
             </ion-item>
-            <ion-item><button ion-button full type="submit"> Cadastrar</button></ion-item>
+
+            <ion-item class="error-message"
+            *ngIf="!addUserForm.controls.password.valid && addUserForm.controls.password.dirty">
+            <p>senha invalida</p>
+            </ion-item>
+
+            <ion-item><button ion-button full type="submit" [disabled]="!addUserForm.valid" > Cadastrar</button></ion-item>
         </ion-list>
     </form>
 </ion-content>
