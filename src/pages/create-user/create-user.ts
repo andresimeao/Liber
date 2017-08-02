@@ -5,6 +5,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import * as firebase from 'firebase/app';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import {NameValidator} from '../../validators/name';
+
 /**
  * Generated class for the CadastroUsuarioPage page.
  *
@@ -17,20 +20,27 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'create-user.html',
 })
 export class CreateUserPage {
-  user = {email:null,
-    password:null,
-    name:null, 
-    urlPhoto:null
-  };
+
+  addUserForm:FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController) {
+  public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController,
+  public formBuilder: FormBuilder){
+    //Formulario com as validações
+    this.addUserForm = this.formBuilder.group({
+      email:['',Validators.compose([Validators.required, Validators.email])],
+      password:['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      name:['',Validators.compose([Validators.required])]
+    });
+
   }
 
 
-  public createUser(user){
 
-    let alert = this.alertCtrl.create({
+  public createUser(){
+    let user: any = this.addUserForm.value;
+    
+    let alertSuccess = this.alertCtrl.create({
     title: 'AVISO',
     subTitle: 'Usuário criado com sucesso',
     buttons: ['ok']
@@ -48,11 +58,12 @@ export class CreateUserPage {
  
     loading.present();
 
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email , user.password).
+    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
     then((firebaseUser) => {
-      this.afDB.database.ref('users/'+ firebaseUser.uid).set(user);
+      this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
+      debugger;
       loading.dismiss();  
-      alert.present();
+      alertSuccess.present();
     }, (error)=>{
       loading.dismiss();
       alertError.present();
