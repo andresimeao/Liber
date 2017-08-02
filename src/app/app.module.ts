@@ -19,6 +19,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ElasticModule } from 'angular2-elastic';
 
+
 export const firebaseConfig = {
     apiKey: "AIzaSyAdS7MMzXuXxkPrn5_H31Vqm2_qKPQvi6A",
     authDomain: "liber-da8ad.firebaseapp.com",
@@ -45,6 +46,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     ElasticModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
