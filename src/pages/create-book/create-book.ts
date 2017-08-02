@@ -13,12 +13,14 @@ export class CreateBookPage {
     category:null,
     gender:null
   }
+  
+  tags = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateBookPage');
+  
+  onChange(val){
+    console.log(this.tags);
   }
 
 }

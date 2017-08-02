@@ -21,14 +21,16 @@
         </ion-item>
 
         <ion-item>
-            <ion-label>Categoria</ion-label>
-            <ion-select [(ngModel)]="book.category">
+            <ion-label floating>Categoria</ion-label>
+            <ion-select [(ngModel)]="book.category" required>
                 <ion-option value="romance">Romance</ion-option>
-                <ion-option value="scienceFiction">Infantil</ion-option>
+                <ion-option value="infantil">Infantil</ion-option>
                 <ion-option value="poetry">Poesia</ion-option>
             </ion-select>
         </ion-item>
-
+        <ion-item>
+            tags
+        </ion-item>
         <ion-item>
             <ion-label>Concordo com os termos</ion-label>
             <ion-checkbox color="secondary" checked="false"></ion-checkbox>
