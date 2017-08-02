@@ -61,9 +61,10 @@
             </ion-item>
         </ion-list>
     </div>
-    <!-- <ion-list inset>
-  <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-    {{ item }}
-  </button> 
-</ion-list> -->
+    <ion-fab right bottom>
+        <button ion-fab color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button (click)="showCreateBook()" ion-fab><ion-icon name="book"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
 </ion-content>
