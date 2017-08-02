@@ -1,0 +1,38 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Criar Livro</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Título</ion-label>
+            <ion-input [(ngModel)]="book.title" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Sinopse</ion-label>
+            <ion-textarea [(ngModel)]="book.synopsis" fz-elastic required></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Categoria</ion-label>
+            <ion-select [(ngModel)]="book.category">
+                <ion-option value="romance">Romance</ion-option>
+                <ion-option value="scienceFiction">Infantil</ion-option>
+                <ion-option value="poetry">Poesia</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Concordo com os termos</ion-label>
+            <ion-checkbox color="secondary" checked="false"></ion-checkbox>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

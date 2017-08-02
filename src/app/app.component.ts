@@ -7,14 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { StartPage } from '../pages/start/start';
+import { CreateBookPage } from '../pages/create-book/create-book';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  rootPage: any = CreateBookPage;
 
   pages: Array<{title: string, component: any}>;
 

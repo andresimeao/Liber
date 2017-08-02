@@ -5,12 +5,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
 import { PerfilPage } from '../pages/perfil/perfil';
 import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
 import { CreateUserPage } from '../pages/create-user/create-user';
-
+import { CreateBookPage } from '../pages/create-book/create-book';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ElasticModule } from 'angular2-elastic';
+
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAdS7MMzXuXxkPrn5_H31Vqm2_qKPQvi6A",
@@ -35,14 +36,17 @@ export const firebaseConfig = {
     PerfilPage,
     StartPage,
     LoginPage,
-    CreateUserPage
+    CreateUserPage,
+    CreateBookPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ElasticModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +56,8 @@ export const firebaseConfig = {
     PerfilPage,
     StartPage,
     LoginPage,
-    CreateUserPage
+    CreateUserPage,
+    CreateBookPage
   ],
   providers: [
     StatusBar,
