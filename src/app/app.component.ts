@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {IdService} from '../services/id-service';
+// import {IdService} from '../services/id-service';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -12,12 +12,12 @@ import { CreateBookPage } from '../pages/create-book/create-book';
 
 @Component({
   templateUrl: 'app.html',
-  providers:[IdService]
+  // providers:[IdService]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CreateBookPage;
+  rootPage: any = StartPage;
 
   pages: Array<{title: string, component: any}>;
 

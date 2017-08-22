@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NameValidator} from '../../validators/name';
+
 
 /**
  * Generated class for the CadastroUsuarioPage page.
@@ -25,12 +25,12 @@ export class CreateUserPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController,
-  public formBuilder: FormBuilder, public nameValidator: NameValidator){
+  public formBuilder: FormBuilder){
     //Formulario com as validações
     this.addUserForm = this.formBuilder.group({
       email:['',Validators.compose([Validators.required, Validators.email])],
       password:['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      name:['',Validators.compose([Validators.required, nameValidator.isValid])]
+      name:['',Validators.compose([Validators.required])]
     });
 
   }

@@ -13,7 +13,7 @@ import { CreateBookPage } from '../pages/create-book/create-book';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {IdService} from '../services/id-service';
+// import {IdService} from '../services/id-service';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -65,7 +65,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    IdService
+    // IdService
   ]
 })
 export class AppModule {}
