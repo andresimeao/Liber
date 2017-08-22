@@ -8,21 +8,22 @@
 
 
 <ion-content padding>
+    <form [formGroup]="addBookForm" (ngSubmit)="createBook()" novalidate>
     <ion-list>
 
         <ion-item>
             <ion-label floating>Título</ion-label>
-            <ion-input [(ngModel)]="book.title" type="text" required></ion-input>
+            <ion-input formControlName="title" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Sinopse</ion-label>
-            <ion-textarea [(ngModel)]="book.synopsis" fz-elastic required></ion-textarea>
+            <ion-textarea formControlName="synopsis" fz-elastic></ion-textarea>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Categoria</ion-label>
-            <ion-select [(ngModel)]="book.category" required>
+            <ion-select formControlName="category">
                 <ion-option value="romance">Romance</ion-option>
                 <ion-option value="infantil">Infantil</ion-option>
                 <ion-option value="poetry">Poesia</ion-option>
@@ -33,8 +34,9 @@
         </ion-item>
         <ion-item>
             <ion-label>Concordo com os termos</ion-label>
-            <ion-checkbox color="secondary" checked="false"></ion-checkbox>
+            <ion-checkbox formControlName="checkTerms" value="true" color="secondary" checked="false"></ion-checkbox>
         </ion-item>
-
+        <ion-item><button ion-button full type="submit" [disabled]="!addBookForm.valid" > Cadastrar</button></ion-item>
     </ion-list>
+    </form>
 </ion-content>
