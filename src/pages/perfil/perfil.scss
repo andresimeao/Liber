@@ -11,3 +11,33 @@
     width: 10rem !important;
     height: 14rem !important;
 }
+
+.status-book.in-progress {
+    color: #f53d3d;
+}
+
+.status-book.finished {
+    color: #32db64;
+}
+
+.status-book.in-revision {
+    color: #488aff;
+}
+
+.footer-book {
+    padding: 10px 0px;
+    bottom: 0px;
+    position: absolute;
+    width: 55%;
+}
+
+.spam-chapters {
+    background-color: #d9d9d9;
+    color: #fff;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    margin-left: 10px;
+    font-weight: 200
+}
