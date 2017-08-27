@@ -31,7 +31,7 @@ export class CreateBookPage {
       synopsis:['', Validators.compose([Validators.required, Validators.minLength(6)])],
       category:['',Validators.compose([Validators.required])],
       // gender:['', Validators.compose([Validators.required])],
-      checkTerms: ['', Validators.compose([Validators.required])],
+      checkTerms: [false, Validators.compose([Validators.required])],
       warnings: ['', Validators.compose([Validators.required])]
     });
   }
