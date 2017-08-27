@@ -9,34 +9,36 @@
 
 <ion-content padding>
     <form [formGroup]="addBookForm" (ngSubmit)="createBook()" novalidate>
-    <ion-list>
+        <ion-list>
 
-        <ion-item>
-            <ion-label floating>Título</ion-label>
-            <ion-input formControlName="title" type="text"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label floating>Título</ion-label>
+                <ion-input formControlName="title" type="text"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label floating>Sinopse</ion-label>
-            <ion-textarea formControlName="synopsis" fz-elastic></ion-textarea>
-        </ion-item>
+            <ion-item>
+                <ion-label floating>Sinopse</ion-label>
+                <ion-textarea formControlName="synopsis" fz-elastic></ion-textarea>
+            </ion-item>
 
-        <ion-item>
-            <ion-label floating>Categoria</ion-label>
-            <ion-select formControlName="category">
-                <ion-option value="romance">Romance</ion-option>
-                <ion-option value="infantil">Infantil</ion-option>
-                <ion-option value="poetry">Poesia</ion-option>
-            </ion-select>
-        </ion-item>
-        <ion-item>
-            tags
-        </ion-item>
-        <ion-item>
-            <ion-label>Concordo com os termos</ion-label>
-            <ion-checkbox formControlName="checkTerms" value="true" color="secondary" checked="false"></ion-checkbox>
-        </ion-item>
-        <ion-item><button ion-button full type="submit" [disabled]="!addBookForm.valid" > Cadastrar</button></ion-item>
-    </ion-list>
+            <ion-item>
+                <ion-label floating>Categoria</ion-label>
+                <ion-select formControlName="category">
+                    <ion-option value="romance">Romance</ion-option>
+                    <ion-option value="infantil">Infantil</ion-option>
+                    <ion-option value="poetry">Poesia</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Avisos</ion-label>
+                <ion-input formControlName="warnings" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Concordo com os termos</ion-label>
+                <ion-checkbox formControlName="checkTerms" color="secondary"></ion-checkbox>
+            </ion-item>
+            <ion-item><button ion-button full type="submit" [disabled]="!addBookForm.valid"> Cadastrar</button></ion-item>
+            <ion-item><button ion-button full type="submit" (click)="openTermsModal()"> termos</button></ion-item>
+        </ion-list>
     </form>
 </ion-content>
