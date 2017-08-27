@@ -48,7 +48,7 @@ export class CreateUserPage {
 
     let alertError = this.alertCtrl.create({
     title: 'AVISO',
-    subTitle: 'Falha ao criar usuario',
+    subTitle: 'Falha ao criar usuário',
     buttons: ['ok']
   });
   
@@ -61,7 +61,6 @@ export class CreateUserPage {
     this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
     then((firebaseUser) => {
       this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
-      debugger;
       loading.dismiss();  
       alertSuccess.present();
     }, (error)=>{
