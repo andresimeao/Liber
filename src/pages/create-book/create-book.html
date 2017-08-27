@@ -35,7 +35,7 @@
             </ion-item>
             <ion-item>
                 <ion-label>Concordo com os termos</ion-label>
-                <ion-checkbox formControlName="checkTerms" color="secondary"></ion-checkbox>
+                <ion-checkbox (click)="openTermsModal()" formControlName="checkTerms" color="secondary"></ion-checkbox>
             </ion-item>
             <ion-item><button ion-button full type="submit" [disabled]="!addBookForm.valid"> Cadastrar</button></ion-item>
             <ion-item><button ion-button full type="submit" (click)="openTermsModal()"> termos</button></ion-item>
