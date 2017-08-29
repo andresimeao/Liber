@@ -37,12 +37,25 @@ export class CreateBookPage {
   }
   
   public createBook(){
+    let loading = this.loadingCtrl.create({content:'Salvando...'});
+
+    loading.present();
+
     let user = this.afAuth.auth.currentUser;
+
     let book = this.addBookForm.value;
+
     let bookDataBase = this.afDB.list('books');
 
     bookDataBase.push({title:book.title, synopsis:book.synopsis, category:book.category, 
-    warnings:book.warnings, userId:user.uid});
+    warnings:book.warnings, userId:user.uid}).then(reference =>{
+      
+    loading.dismiss();
+      this.alertCtrl.create({title:'AVISO',subTitle:'Criado com sucesso', buttons:['Ok']}).present();
+    },error =>{
+      this.alertCtrl.create({title:'AVISO',subTitle:'Falha', buttons:['Ok']}).present();
+      loading.dismiss();
+    });
 
   }
 
