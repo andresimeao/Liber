@@ -37,23 +37,27 @@ export class CreateBookPage {
   }
   
   public createBook(){
-    let loading = this.loadingCtrl.create({content:'Salvando...'});
-
+  
+    let loading = this.loadingCtrl.create({content:'Criando...'});
     loading.present();
-
-    let user = this.afAuth.auth.currentUser;
-
+    let userauth = this.afAuth.auth.currentUser;
     let book = this.addBookForm.value;
-
     let bookDataBase = this.afDB.list('books');
 
     bookDataBase.push({title:book.title, synopsis:book.synopsis, category:book.category, 
-    warnings:book.warnings, userId:user.uid}).then(reference =>{
+    warnings:book.warnings, userId:userauth.uid}).then(reference =>{
+     
       
     loading.dismiss();
+
       this.alertCtrl.create({title:'AVISO',subTitle:'Criado com sucesso', buttons:['Ok']}).present();
+      let user = this.afDB.list('users/'+ userauth.uid +'/booksId');
+      user.push({bookId:reference.path.o[1], title:book.title}).then(reference => {console.log('id do livro cadastrado no usuario')});
+
     },error =>{
+
       this.alertCtrl.create({title:'AVISO',subTitle:'Falha', buttons:['Ok']}).present();
+
       loading.dismiss();
     });
 
