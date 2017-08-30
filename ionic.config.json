@@ -1,5 +1,8 @@
 {
   "name": "Liber",
   "app_id": "76869d57",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

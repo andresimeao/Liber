@@ -22,6 +22,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ElasticModule } from 'angular2-elastic';
 
+import { Camera } from '@ionic-native/camera';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAdS7MMzXuXxkPrn5_H31Vqm2_qKPQvi6A",
@@ -67,6 +68,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // IdService
   ]
