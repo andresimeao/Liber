@@ -7,24 +7,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {TermsModalPage} from '../terms-modal/terms-modal';
 
+import { Camera } from '@ionic-native/camera';
+
 @Component({
   selector: 'page-create-book',
   templateUrl: 'create-book.html',
 })
 export class CreateBookPage {
   
-  // book = {
-  //   title:null,
-  //   synopsis:null,
-  //   category:null,
-  //   gender:null,
-  //   warnings:null
-  // }
+  base64Image:any;
     
   addBookForm:FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController, private alertCtrl: AlertController,
-  public formBuilder: FormBuilder, public modalCtrl: ModalController) {
+  public formBuilder: FormBuilder, public modalCtrl: ModalController,public camera:Camera) {
    
     this.addBookForm = this.formBuilder.group({
       title:['',Validators.compose([Validators.required])],
@@ -35,7 +31,18 @@ export class CreateBookPage {
       warnings: ['', Validators.compose([Validators.required])]
     });
   }
-  
+  accessGallery(){
+    this.camera.getPicture({
+      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      destinationType: this.camera.DestinationType.DATA_URL
+     }).then((imageData) => {
+       this.base64Image = 'data:image/jpeg;base64,'+imageData;
+      }, (err) => {
+       console.log(err);
+       alert("erro"+ err);
+     });
+   }
+
   public createBook(){
   
     let loading = this.loadingCtrl.create({content:'Criando...'});
