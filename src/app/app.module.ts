@@ -26,11 +26,12 @@ import { ElasticModule } from 'angular2-elastic';
 import { Camera } from '@ionic-native/camera';
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyAdS7MMzXuXxkPrn5_H31Vqm2_qKPQvi6A",
-    authDomain: "liber-da8ad.firebaseapp.com",
-    databaseURL: "https://liber-da8ad.firebaseio.com",
-    storageBucket: "liber-da8ad.appspot.com",
-    messagingSenderId: "877231867880"
+  apiKey: "AIzaSyCR1Vw2pQGIntu-eTDMGRz_pxePosCAenc",
+  authDomain: "liber-760db.firebaseapp.com",
+  databaseURL: "https://liber-760db.firebaseio.com",
+  projectId: "liber-760db",
+  storageBucket: "liber-760db.appspot.com",
+  messagingSenderId: "252339686715"
 };
 
 @NgModule({

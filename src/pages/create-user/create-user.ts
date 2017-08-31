@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StartPage } from '../start/start';
 
 
 /**
@@ -36,55 +37,39 @@ export class CreateUserPage {
 
   }
 
-
+public adduser(name):boolean{
+  let lista =  this.listUsers = this.afDB.list('users');
+  
+  lista.forEach(element => {
+    element.forEach(i => {
+      if(i.name == name ){
+        return false;
+      }
+    });
+    
+  });
+  return true;
+}
 
   public createUser(){
     let user: any = this.addUserForm.value;
-    let lista =  this.listUsers = this.afDB.list('users');
-    
-    let alertSuccess = this.alertCtrl.create({
-    title: 'AVISO',
-    subTitle: 'Usuário criado com sucesso',
-    buttons: ['ok']
-  });
-
-    let alertError = this.alertCtrl.create({
-    title: 'AVISO',
-    subTitle: 'Falha ao criar usuário',
-    buttons: ['ok']
-  });
+    // let lista =  this.listUsers = this.afDB.list('users');
   
   let loading = this.loadingCtrl.create({
     content: 'Salvando...'
   });
- 
     loading.present();
-
-    lista.forEach(element => {
-      
-             element.forEach(i => {
-               if(i.name === user.name){
-                this.alertCtrl.create({title:'AVISO',message:'Nome de usuario ja existe', buttons:['Ok']}).present();
-                loading.dismiss();
-               }else{
-                this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
-                then((firebaseUser) => {
-                  this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
-                  loading.dismiss();  
-                  alertSuccess.present();
-                }, (error)=>{
-                  loading.dismiss();
-                  alertError.present();
-                });
-               }
-             });
-            
-          });
-
-    
-    
-       
-     
+    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
+    then((firebaseUser) => {
+      this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
+      loading.dismiss();
+      this.alertCtrl.create({title:'Aviso',message:'Usuário criado com sucesso',buttons:['ok']}).present()  
+      this.navCtrl.setRoot(StartPage);
+    }, (error)=>{
+      loading.dismiss();
+      this.alertCtrl.create({title:'Aviso',message:'Falha ao criar usuário',buttons:['ok']}).present()
+    });
+               
   }
 
 }
