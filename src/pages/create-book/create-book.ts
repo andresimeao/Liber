@@ -18,6 +18,10 @@ export class CreateBookPage {
   base64Image:any;
     
   addBookForm:FormGroup;
+
+  warningsList = ['Heterossexualidade','Homossexualidade','Bissexualidade', 'Sexo','Violência'];
+  categoryList = ['Infantil', 'Romance', 'Poesia'];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController, private alertCtrl: AlertController,
   public formBuilder: FormBuilder, public modalCtrl: ModalController,public camera:Camera) {
