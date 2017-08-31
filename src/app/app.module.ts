@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CreateUserPage } from '../pages/create-user/create-user';
 import { CreateBookPage } from '../pages/create-book/create-book';
 import {TermsModalPage} from '../pages/terms-modal/terms-modal';
+import {BookPage} from '../pages/book/book';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,6 +44,7 @@ export const firebaseConfig = {
     CreateUserPage,
     CreateBookPage,
     TermsModalPage,
+    BookPage,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ export const firebaseConfig = {
     CreateUserPage,
     CreateBookPage,
     TermsModalPage,
+    BookPage,
   ],
   providers: [
     StatusBar,
