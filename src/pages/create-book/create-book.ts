@@ -20,7 +20,7 @@ export class CreateBookPage {
   addBookForm:FormGroup;
 
   warningsList = ['Heterossexualidade','Homossexualidade','Bissexualidade', 'Sexo','Violência'];
-  categoryList = ['Infantil', 'Romance', 'Poesia'];
+  categoryList = [ 'Aventura', 'Ação', 'Conto','Diversos','Espiritual','Fanfic','Fantasia','Feminina','Ficção adolescente','Ficção científica','Ficção Geral','Ficção histórica','Humor','Infantil','Mistério','Não ficção', 'Paranormal','Poesia','Romance', 'Terror' ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController, private alertCtrl: AlertController,

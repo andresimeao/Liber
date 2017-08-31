@@ -8,8 +8,9 @@
 
 
 <ion-content padding>
-    <form [formGroup]="addBookForm" (ngSubmit)="createBook()" novalidate>
-        <ion-list>
+
+    <ion-list>
+        <form [formGroup]="addBookForm" (ngSubmit)="createBook()" novalidate>
             <ion-item>
                 <ion-icon [hidden]="base64Image !== any" (click)="accessGallery()" class="image-book" name="image"></ion-icon>
                 <img class="image-book" [hidden]="base64Image !== any" (click)="accessGallery()" [src]="base64Image" *ngIf="base64Image" />
@@ -41,7 +42,7 @@
                 <ion-checkbox formControlName="checkTerms" color="secondary"></ion-checkbox>
             </ion-item>
             <ion-item><button ion-button full type="submit" [disabled]="!addBookForm.valid"> Cadastrar</button></ion-item>
-            <ion-item><a ion-button full type="submit" (click)="openTermsModal()"> termos</a></ion-item>
-        </ion-list>
-    </form>
+        </form>
+        <ion-item><button ion-button full (click)="openTermsModal()"> Termos</button></ion-item>
+    </ion-list>
 </ion-content>
