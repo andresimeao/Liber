@@ -1,18 +1,41 @@
-<!--
-  Generated template for the BookPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>book</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Liber</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+    <!-- <ion-grid>
+        <ion-row>
+            <ion-col col-4></ion-col>
+            <ion-col col-4>
+                <img src="http://4.bp.blogspot.com/-AUo8qpbmCrI/TcaTaw9daVI/AAAAAAAACnA/cattreziXIc/s1600/capa_a_tormenta_de_espadas_frente.jpg" />
+            </ion-col>
+            <ion-col col-4></ion-col>
+        </ion-row>
+    </ion-grid> -->
+    <ion-list>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img class="img-book-thumb-small" src="http://4.bp.blogspot.com/-AUo8qpbmCrI/TcaTaw9daVI/AAAAAAAACnA/cattreziXIc/s1600/capa_a_tormenta_de_espadas_frente.jpg">
+            </ion-thumbnail>
+            <h2>A Tormenta de Espadas</h2>
+            <h3>George R. R. Martin</h3>
+            <p class="status-book in-progress">Em progresso</p>
+            <p>
+                <ion-icon name="list-box"></ion-icon> 24
+                <ion-icon name="megaphone"></ion-icon> 500
+            </p>
+        </ion-item>
+        <ion-item>
+            <h3>Sinopse</h3>
+            <p ng-bind-html="sinopse | limitTo:500 ">
+                {{sinopse}}
+            </p>
+        </ion-item>
+    </ion-list>
 </ion-content>
