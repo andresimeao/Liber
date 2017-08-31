@@ -22,6 +22,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CreateUserPage {
 
   addUserForm:FormGroup;
+  listUsers: FirebaseListObservable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   public afDB: AngularFireDatabase, public afAuth: AngularFireAuth,public loadingCtrl: LoadingController,private alertCtrl: AlertController,
@@ -39,6 +40,7 @@ export class CreateUserPage {
 
   public createUser(){
     let user: any = this.addUserForm.value;
+    let lista =  this.listUsers = this.afDB.list('users');
     
     let alertSuccess = this.alertCtrl.create({
     title: 'AVISO',
@@ -58,15 +60,28 @@ export class CreateUserPage {
  
     loading.present();
 
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
-    then((firebaseUser) => {
-      this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
-      loading.dismiss();  
-      alertSuccess.present();
-    }, (error)=>{
-      loading.dismiss();
-      alertError.present();
-    });
+    lista.forEach(element => {
+      
+             element.forEach(i => {
+               if(i.name === user.name){
+                this.alertCtrl.create({title:'AVISO',message:'Nome de usuario ja existe', buttons:['Ok']}).present();
+                loading.dismiss();
+               }else{
+                this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).
+                then((firebaseUser) => {
+                  this.afDB.database.ref('users/'+ firebaseUser.uid).set({name:user.name, email:user.email});
+                  loading.dismiss();  
+                  alertSuccess.present();
+                }, (error)=>{
+                  loading.dismiss();
+                  alertError.present();
+                });
+               }
+             });
+            
+          });
+
+    
     
        
      

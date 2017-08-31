@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth,  } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
 import {HomePage} from '../home/home';
@@ -11,16 +12,16 @@ import {HomePage} from '../home/home';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  
+  listUsers: FirebaseListObservable<any>;
   user: Observable<firebase.User>;
    user1 = {
      email:null,
      password:null
    }
-  constructor(public navCtrl: NavController, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+  constructor(public afDB:AngularFireDatabase, public navCtrl: NavController, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
     this.user = afAuth.authState;
-  }
 
+    }
   public loginIn(user1){
     let loading = this.loadingCtrl.create({content:'Autenticando...'});
     loading.present();

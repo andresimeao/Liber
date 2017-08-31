@@ -43,14 +43,14 @@ export class CreateBookPage {
     let userauth = this.afAuth.auth.currentUser;
     let book = this.addBookForm.value;
     let bookDataBase = this.afDB.list('books');
-
+    
     bookDataBase.push({title:book.title, synopsis:book.synopsis, category:book.category, 
     warnings:book.warnings, userId:userauth.uid}).then(reference =>{
      
       
     loading.dismiss();
 
-      this.alertCtrl.create({title:'AVISO',subTitle:'Criado com sucesso', buttons:['Ok']}).present();
+      this.alertCtrl.create({title:'AVISO',message:'Criado com sucesso', buttons:['Ok']}).present();
       let user = this.afDB.list('users/'+ userauth.uid +'/booksId');
       user.push({bookId:reference.path.o[1], title:book.title}).then(reference => {console.log('id do livro cadastrado no usuario')});
 
