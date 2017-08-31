@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CreateUserPage } from '../pages/create-user/create-user';
 import { CreateBookPage } from '../pages/create-book/create-book';
 import {TermsModalPage} from '../pages/terms-modal/terms-modal';
+import {BookPage} from '../pages/book/book';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +23,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ElasticModule } from 'angular2-elastic';
 
+import { Camera } from '@ionic-native/camera';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAdS7MMzXuXxkPrn5_H31Vqm2_qKPQvi6A",
@@ -42,6 +44,7 @@ export const firebaseConfig = {
     CreateUserPage,
     CreateBookPage,
     TermsModalPage,
+    BookPage,
   ],
   imports: [
     BrowserModule,
@@ -63,10 +66,12 @@ export const firebaseConfig = {
     CreateUserPage,
     CreateBookPage,
     TermsModalPage,
+    BookPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // IdService
   ]

@@ -1,0 +1,14 @@
+page-book {
+    p {
+        /* Tamanho */
+        max-height: 300px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    p:hover {
+        max-height: none !important;
+        text-overflow: clip;
+        white-space: normal;
+    }
+}
